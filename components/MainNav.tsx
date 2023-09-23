@@ -21,7 +21,12 @@ const MainNav = ({
       href: `/${params.storeId}`,
       label: "Overview",
       active: pathname === `${params.storeId}`,
-    }
+    },
+    {
+      href: `/${params.storeId}/billboards`,
+      label: "Billboards",
+      active: pathname === `${params.storeId}/billboards`,
+    },
   ];
   return (
     <nav className={cn("flex items-center space-x-4 lg:space-x-6", className)}>
