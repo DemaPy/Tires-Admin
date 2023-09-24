@@ -3,13 +3,14 @@
 import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Billboard } from "@prisma/client";
 import { Plus } from "lucide-react";
-import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
+import { BillboardColumn, columns } from "./columns";
+import { DataTable } from "@/components/ui/data-table";
+import ApiList from "@/components/ui/api-list";
 
 interface IBillBoardClient {
-  data: Billboard[];
+  data: BillboardColumn[];
 }
 
 export const BillboardClient = ({ data }: IBillBoardClient) => {
@@ -31,6 +32,10 @@ export const BillboardClient = ({ data }: IBillBoardClient) => {
         </Button>
       </div>
       <Separator />
+      <DataTable searchKey="label" columns={columns} data={data}  />
+      <Heading title="API" label="API calls for Billboards" />
+      <Separator />
+      <ApiList name="billboards" idName="billboardId" />
     </>
   );
 };
