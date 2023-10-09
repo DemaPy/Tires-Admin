@@ -1,7 +1,7 @@
 "use client";
 
 import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
-import { BillboardColumn } from "./columns";
+import { ProductColumns } from "./columns";
 import {
   DropdownMenuContent,
   DropdownMenuItem,
@@ -17,7 +17,7 @@ import axios from "axios";
 import AlertModal from "@/components/modals/alert-modal";
 
 interface ICellAction {
-  data: BillboardColumn;
+  data: ProductColumns;
 }
 
 const CellAction = ({ data }: ICellAction) => {
@@ -27,23 +27,23 @@ const CellAction = ({ data }: ICellAction) => {
   const params = useParams();
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success("Billboard id copied to the clipboard.");
+    toast.success("Product id copied to the clipboard.");
   };
 
   const onUpdate = () => {
-    router.push(`/${params.storeId}/billboards/${data.id}`);
+    router.push(`/${params.storeId}/products/${data.id}`);
   };
 
   const onDelete = async () => {
     try {
       setLoading(true);
       await axios.delete(
-        `/api/${params.storeId}/billboards/${data.id}`
+        `/api/${params.storeId}/products/${data.id}`
       );
       router.refresh();
-      toast.success("Billboard deleted");
+      toast.success("Product deleted");
     } catch (error) {
-      toast.error("Make sure you removed all categories using this billboard.");
+      toast.error("Something went wrong.");
     } finally {
       setLoading(false);
       setOpen(false);

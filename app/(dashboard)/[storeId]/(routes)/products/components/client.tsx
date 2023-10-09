@@ -32,7 +32,7 @@ export const ProductCLient = ({ data }: IProductClient) => {
         </Button>
       </div>
       <Separator />
-      <DataTable searchKey="label" columns={columns} data={data}  />
+      <DataTable searchKey="name" columns={columns} data={data}  />
       <Heading title="API" label="API calls for products" />
       <Separator />
       <ApiList name="products" idName="productId" />
