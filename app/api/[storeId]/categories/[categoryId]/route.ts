@@ -42,7 +42,6 @@ export async function PATCH(
       },
       data: {
         name,
-        
       },
     });
 
@@ -103,6 +102,9 @@ export async function GET(
     const category = await prismadb.category.findFirst({
       where: {
         id: params.categoryId,
+      },
+      include: {
+        billboard: true,
       },
     });
 
